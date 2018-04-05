@@ -76,6 +76,8 @@ public class CalcController {
         return res;
     }
 
+    @RequestMapping(value="/Addition")
+    @PostMapping
     public Response Addition(@RequestBody Request request){
       Response response = new Response();
 
@@ -83,3 +85,5 @@ public class CalcController {
       return response;
     }
 }
+
+

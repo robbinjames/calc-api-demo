@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Request {
 
-    private String first;
-    private String second;
+    private int first;
+    private int second;
 
 }

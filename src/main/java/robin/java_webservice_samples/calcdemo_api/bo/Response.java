@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Response {
 
-    private String Result;
+    private int Result;
 }
 
