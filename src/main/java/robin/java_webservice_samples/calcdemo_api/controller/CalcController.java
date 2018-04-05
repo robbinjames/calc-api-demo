@@ -76,13 +76,22 @@ public class CalcController {
         return res;
     }
 
-    @RequestMapping(value="/Addition")
+    @RequestMapping(value="/addition")
     @PostMapping
-    public Response Addition(@RequestBody Request request){
+    public Response addition(@RequestBody Request request){
       Response response = new Response();
 
       response.setResult( (request.getFirst() + request.getSecond()) );
       return response;
+    }
+
+    @RequestMapping(value="/substraction")
+    @PostMapping
+    public Response substraction(@RequestBody Request request){
+        Response response = new Response();
+
+        response.setResult( (request.getFirst() - request.getSecond()) );
+        return response;
     }
 }
 
