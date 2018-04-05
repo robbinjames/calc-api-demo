@@ -1,6 +1,5 @@
-package robin.java_webservice_samples.calcdemo_api.Controller;
+package robin.java_webservice_samples.calcdemo_api.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping(value="/Calc")
-public class Demo_Calc_Controller {
+public class CalcController {
 
     //@GetMapping
     @RequestMapping(value="/Add")

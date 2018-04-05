@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>robin.java_webservice_samples</groupId>
-	<artifactId>calc-demo_api</artifactId>
+	<artifactId>calc-api-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>calc-demo_api</name>
+	<name>calc-api-demo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
