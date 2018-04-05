@@ -1,9 +1,7 @@
 package robin.java_webservice_samples.calcdemo_api.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import robin.java_webservice_samples.calcdemo_api.bo.*;
 
 @RestController
 @RequestMapping(value="/Calc")
@@ -76,5 +74,12 @@ public class CalcController {
         res = nFN / nSN;
         System.out.println("Result is " +  res );
         return res;
+    }
+
+    public Response Addition(@RequestBody Request request){
+      Response response = new Response();
+
+      response.setResult( (request.getFirst() + request.getSecond()) );
+      return response;
     }
 }
