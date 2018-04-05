@@ -2,10 +2,13 @@ package robin.java_webservice_samples.calcdemo_api.controller;
 
 import org.springframework.web.bind.annotation.*;
 import robin.java_webservice_samples.calcdemo_api.bo.*;
+import robin.java_webservice_samples.calcdemo_api.services.CalculatorServices;
 
 @RestController
 @RequestMapping(value="/Calc")
 public class CalcController {
+
+    // ------------------------------Query and Path Parameters Handling -----------------------
 
     //@GetMapping
     @RequestMapping(value="/Add")
@@ -76,21 +79,43 @@ public class CalcController {
         return res;
     }
 
+    //---------------------------With Bussiness Logic Objects on Request Body mode----------------------------
+    @RequestMapping(value="/adtn")
+    @PostMapping
+    public Response adtn(@RequestBody Request request){
+        Response response = new Response();
+
+        response.setResult( (request.getFirst() + request.getSecond()) );
+        return response;
+    }
+
+    @RequestMapping(value="/substn")
+    @PostMapping
+    public Response substn(@RequestBody Request request){
+        Response response = new Response();
+
+        response.setResult( (request.getFirst() - request.getSecond()) );
+        return response;
+    }
+
+    // ----------------------------Removing Business Logic from Controller Class--------------------------
+
     @RequestMapping(value="/addition")
     @PostMapping
-    public Response addition(@RequestBody Request request){
-      Response response = new Response();
+    public int addition( @RequestBody Request request){
 
-      response.setResult( (request.getFirst() + request.getSecond()) );
-      return response;
+        int nResult;
+        CalculatorServices objService = new CalculatorServices();
+        nResult = objService.addition(request);
+        return  nResult;
     }
 
     @RequestMapping(value="/substraction")
     @PostMapping
     public Response substraction(@RequestBody Request request){
-        Response response = new Response();
-
-        response.setResult( (request.getFirst() - request.getSecond()) );
+        Response response;
+        CalculatorServices objService = new CalculatorServices();
+        response = objService.substraction(request);
         return response;
     }
 }
