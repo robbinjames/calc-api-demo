@@ -1,17 +1,21 @@
 package robin.java_webservice_samples.calcdemo_api.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import robin.java_webservice_samples.calcdemo_api.bo.*;
 import robin.java_webservice_samples.calcdemo_api.services.CalculatorServices;
 
 @RestController
-@RequestMapping(value="/Calc")
+@RequestMapping(value="/calc")
 public class CalcController {
+
+    @Autowired
+    private CalculatorServices mycalcService;
 
     // ------------------------------Query and Path Parameters Handling -----------------------
 
     //@GetMapping
-    @RequestMapping(value="/Add")
+    @RequestMapping(value="/add")
     public int Add( @RequestParam("firstNumber") int nFN,
                     @RequestParam("secondNumber") int nSN )
     {
@@ -28,7 +32,7 @@ public class CalcController {
         return res;
     }
 
-    @RequestMapping(value="/Sub/{firstNumber}/{secondNumber}")
+    @RequestMapping(value="/sub/{firstNumber}/{secondNumber}")
     public int Sub( @PathVariable("firstNumber") int nFN,
                     @PathVariable("secondNumber") int nSN )
     {
@@ -45,7 +49,7 @@ public class CalcController {
         return res;
     }
 
-    @RequestMapping(value="/Mul")
+    @RequestMapping(value="/mul")
     public int Mul( @RequestParam("firstNumber") int nFN,
                     @RequestParam("secondNumber") int nSN )
     {
@@ -62,7 +66,7 @@ public class CalcController {
         return res;
     }
 
-    @RequestMapping(value="/Div/{firstNumber}/{secondNumber}")
+    @RequestMapping(value="/div/{firstNumber}/{secondNumber}")
     public int Div( @PathVariable("firstNumber") int nFN,
                     @PathVariable("secondNumber") int nSN )
     {
@@ -103,20 +107,13 @@ public class CalcController {
     @RequestMapping(value="/addition")
     @PostMapping
     public int addition( @RequestBody Request request){
-
-        int nResult;
-        CalculatorServices objService = new CalculatorServices();
-        nResult = objService.addition(request);
-        return  nResult;
+        return  mycalcService.addition(request);
     }
 
     @RequestMapping(value="/substraction")
     @PostMapping
     public Response substraction(@RequestBody Request request){
-        Response response;
-        CalculatorServices objService = new CalculatorServices();
-        response = objService.substraction(request);
-        return response;
+        return mycalcService.substraction(request);
     }
 }
 
